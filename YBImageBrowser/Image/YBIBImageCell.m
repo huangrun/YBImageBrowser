@@ -29,15 +29,17 @@
     if (self) {
         [self initValue];
         [self.contentView addSubview:self.imageScrollView];
+        self.imageScrollView.frame = self.bounds;//解决图片未加载完和视频手势关闭闪烁问题第三步 Henry 20220707
         [self addGesture];
     }
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    self.imageScrollView.frame = self.bounds;
-}
+//解决图片未加载完和视频手势关闭闪烁问题第四步 Henry 20220707
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
+//    self.imageScrollView.frame = self.bounds;
+//}
 
 - (void)initValue {
     _interactStartPoint = CGPointZero;
