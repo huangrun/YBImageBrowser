@@ -60,15 +60,17 @@
     if (self) {
         [self initValue];
         [self.contentView addSubview:self.videoView];
+        self.videoView.frame = self.bounds;//解决图片未加载完和视频手势关闭闪烁问题第一步 Henry 20220707
         [self addGesture];
     }
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    self.videoView.frame = self.bounds;
-}
+//解决图片未加载完和视频手势关闭闪烁问题第二步 Henry 20220707
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
+//    self.videoView.frame = self.bounds;
+//}
 
 - (void)initValue {
     _interactStartPoint = CGPointZero;
